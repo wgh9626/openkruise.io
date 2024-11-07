@@ -126,6 +126,8 @@ spec:
         resources:
           requests:
             storage: 20Gi
+    updateStrategy:
+      type: InPlaceIfPossible
 ```
 2. Change image to nginx:v2, and volumeClaimTemplates storage to 40G
 3. CloneSet in-place update Pod and does not rebuild the volume, so the volume size corresponding to the new Pod is still 20 Gi and is not up-to-date.
